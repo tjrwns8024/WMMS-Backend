@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://root:tjrwns6288!@localhost:3306/wmms?serverTimezone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+auth:
+  jwt:
+    secret: kr1iCiLDWnMLq
+    header: Authorization
+    prefix: Bearer
+    exp:
+      access: 3600000 #60분
+      refresh: 604800000 #1
+server:
+  port: 8080
