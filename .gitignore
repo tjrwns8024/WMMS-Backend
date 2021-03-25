@@ -21,6 +21,8 @@ build/
 *.ipr
 *.yml
 out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/
