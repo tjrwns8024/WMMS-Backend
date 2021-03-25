@@ -35,3 +35,4 @@ out/
 .vscode/
 
 src/main/resources/application.yml
+src/test/kotlin/com/tjrwns8024/wmms/
