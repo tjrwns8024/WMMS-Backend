@@ -13,10 +13,11 @@ class Washer(
         var name: String,
 
         @Column(nullable = false)
-        var description: String
-) {
-    constructor() : this(
-            name = "default",
-            description = "default"
-    )
-}
+        var description: String,
+
+        @Column(nullable = false)
+        var image: String,
+
+        @Column(nullable = false)
+        var register_date: String
+)
