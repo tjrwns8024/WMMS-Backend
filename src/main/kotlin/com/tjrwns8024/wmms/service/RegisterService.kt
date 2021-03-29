@@ -1,7 +1,7 @@
 package com.tjrwns8024.wmms.service
 
-import com.tjrwns8024.wmms.model.payload.request.WasherRequest
+import org.springframework.web.multipart.MultipartFile
 
 interface RegisterService {
-    fun registerWM(washerRequest: WasherRequest)
+    fun registerWM(name: String, description: String, image: MultipartFile)
 }

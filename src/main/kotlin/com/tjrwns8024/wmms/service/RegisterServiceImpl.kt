@@ -1,21 +1,26 @@
 package com.tjrwns8024.wmms.service
 
 import com.tjrwns8024.wmms.model.entitys.Washer
-import com.tjrwns8024.wmms.model.payload.request.WasherRequest
 import com.tjrwns8024.wmms.repository.RegisterRepository
+import com.tjrwns8024.wmms.util.S3Service
+import lombok.RequiredArgsConstructor
 import org.springframework.stereotype.Service
+import org.springframework.web.multipart.MultipartFile
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @Service
-class RegisterServiceImpl(private var registerRepository: RegisterRepository) : RegisterService {
-    override fun registerWM(washerRequest: WasherRequest) {
+class RegisterServiceImpl(
+        private val registerRepository: RegisterRepository,
+        private val s3Service: S3Service) : RegisterService {
 
+    override fun registerWM(name: String, description: String, image: MultipartFile) {
         registerRepository.save(
                 Washer(
-                        name = washerRequest.name,
-                        description = washerRequest.description,
-                        image = "fsadfas",
+                        name = name,
+                        description = description,
+                        image = s3Service.upload(image, "washer/")!!,
+                        status = false,
                         register_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 )
         )

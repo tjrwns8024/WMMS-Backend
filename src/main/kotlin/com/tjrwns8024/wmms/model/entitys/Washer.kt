@@ -5,19 +5,22 @@ import javax.persistence.*
 @Entity(name = "wm")
 class Washer(
         @Id
-        @Column()
+        @Column
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Int = 0,
+        val id: Int = 0,
 
         @Column(nullable = false)
-        var name: String,
+        val name: String,
 
         @Column(nullable = false)
-        var description: String,
+        val description: String,
 
         @Column(nullable = false)
-        var image: String,
+        val image: String,
 
         @Column(nullable = false)
-        var register_date: String
+        val status: Boolean,
+
+        @Column(nullable = false)
+        val register_date: String
 )
