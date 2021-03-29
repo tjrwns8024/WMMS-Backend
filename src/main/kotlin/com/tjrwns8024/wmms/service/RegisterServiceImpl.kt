@@ -1,9 +1,8 @@
 package com.tjrwns8024.wmms.service
 
 import com.tjrwns8024.wmms.model.entitys.Washer
-import com.tjrwns8024.wmms.repository.RegisterRepository
+import com.tjrwns8024.wmms.repository.WasherRepository
 import com.tjrwns8024.wmms.util.S3Service
-import lombok.RequiredArgsConstructor
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.time.LocalDateTime
@@ -11,7 +10,7 @@ import java.time.format.DateTimeFormatter
 
 @Service
 class RegisterServiceImpl(
-        private val registerRepository: RegisterRepository,
+        private val registerRepository: WasherRepository,
         private val s3Service: S3Service) : RegisterService {
 
     override fun registerWM(name: String, description: String, image: MultipartFile) {
