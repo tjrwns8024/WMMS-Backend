@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface RegisterRepository : JpaRepository<Washer, Int> {
+interface WasherRepository : JpaRepository<Washer, Int> {
+    fun findAllByStatus(status: Boolean): List<Washer>
+    fun findAllBy(): List<Washer>
 }
