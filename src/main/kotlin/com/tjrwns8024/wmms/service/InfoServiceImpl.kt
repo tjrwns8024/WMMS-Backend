@@ -3,9 +3,7 @@ package com.tjrwns8024.wmms.service
 import com.tjrwns8024.wmms.model.response.WasherInfo
 import com.tjrwns8024.wmms.model.response.WasherListInfo
 import com.tjrwns8024.wmms.repository.WasherRepository
-import org.omg.CORBA.UserException
 import org.springframework.stereotype.Service
-import java.io.IOException
 
 @Service
 class InfoServiceImpl(private val washerRepository: WasherRepository) : InfoService {
