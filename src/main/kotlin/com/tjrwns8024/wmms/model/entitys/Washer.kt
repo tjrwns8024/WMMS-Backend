@@ -2,25 +2,24 @@ package com.tjrwns8024.wmms.model.entitys
 
 import javax.persistence.*
 
-@Entity(name = "wm")
-class Washer(
+@Entity(name = "tbl_wm")
+data class Washer(
         @Id
-        @Column
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Int = 0,
 
         @Column(nullable = false)
-        val name: String,
+        var name: String = "",
 
         @Column(nullable = false)
-        val description: String,
+        var description: String = "",
 
         @Column(nullable = false)
-        val image: String,
+        var image: String = "",
 
         @Column(nullable = false)
-        val status: Boolean,
+        var status: Boolean = false,
 
         @Column(nullable = false)
-        val register_date: String
+        var register_date: String = ""
 )
