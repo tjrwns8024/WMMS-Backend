@@ -36,6 +36,7 @@ dependencies {
     //s3
     implementation(platform("software.amazon.awssdk:bom:2.7.16"))
     implementation("com.amazonaws:aws-java-sdk-s3:1.11.603")
+    
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("mysql:mysql-connector-java")
     annotationProcessor("org.projectlombok:lombok")
