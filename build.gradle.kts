@@ -32,6 +32,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    //s3
     implementation(platform("software.amazon.awssdk:bom:2.7.16"))
     implementation("com.amazonaws:aws-java-sdk-s3:1.11.603")
     compileOnly("org.projectlombok:lombok")
