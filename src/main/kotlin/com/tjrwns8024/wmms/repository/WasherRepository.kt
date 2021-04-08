@@ -7,7 +7,7 @@ import java.util.*
 
 @Repository
 interface WasherRepository : JpaRepository<Washer, Int> {
-    fun findAllByStatus(status: Boolean): List<Washer>
+    fun findAllByStatus(status: String): List<Washer>
     fun findAllBy(): List<Washer>
     fun findByName(name: String): Optional<Washer>
 }

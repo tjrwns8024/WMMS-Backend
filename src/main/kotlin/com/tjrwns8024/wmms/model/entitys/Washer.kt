@@ -18,7 +18,7 @@ data class Washer(
         var image: String = "",
 
         @Column(nullable = false)
-        var status: Boolean = false,
+        var status: String = "",
 
         @Column(nullable = false)
         var register_date: String = ""

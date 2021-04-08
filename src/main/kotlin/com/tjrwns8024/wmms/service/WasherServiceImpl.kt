@@ -24,7 +24,7 @@ class WasherServiceImpl(
                         name = name,
                         description = description,
                         image = s3Service.upload(image, "washer/")!!,
-                        status = false,
+                        status = "UNAVAILABLE",
                         register_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
                 )
         )
@@ -33,7 +33,7 @@ class WasherServiceImpl(
     }
 
     override fun getAvailableWM(): List<WasherListInfo> =
-            washerRepository.findAllByStatus(true).map {
+            washerRepository.findAllByStatus("AVAILABLE").map {
                 WasherListInfo(
                         it.id,
                         it.name,
@@ -70,7 +70,10 @@ class WasherServiceImpl(
     override fun changeWMStatus(id: Int) {
         val washer = washerRepository.findById(id).orElseThrow { Exception() }
 
-        washer.status = !washer.status
+        when (washer.status) {
+            "AVAILABLE" -> washer.status = "UNAVAILABLE"
+            "UNAVAILABLE" -> washer.status = "AVAILABLE"
+        }
 
         washerRepository.save(washer)
 

@@ -5,6 +5,6 @@ data class WasherInfo(
         val name: String,
         val description: String,
         val image: String,
-        val status: Boolean,
+        val status: String,
         val register_date: String
 )
