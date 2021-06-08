@@ -46,6 +46,6 @@ class S3Service {
         val fileName = file.originalFilename
         s3Client.putObject(PutObjectRequest(bucket, dirName + fileName, file.inputStream, null)
                 .withCannedAcl(CannedAccessControlList.AuthenticatedRead))
-        return s3Client.getUrl(bucket, dirName + fileName).toString()
+        return fileName
     }
 }

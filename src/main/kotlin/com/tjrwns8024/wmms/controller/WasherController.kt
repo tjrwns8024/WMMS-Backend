@@ -1,5 +1,6 @@
 package com.tjrwns8024.wmms.controller
 
+import com.tjrwns8024.wmms.model.response.WasherID
 import com.tjrwns8024.wmms.model.response.WasherInfo
 import com.tjrwns8024.wmms.model.response.WasherListInfo
 import com.tjrwns8024.wmms.service.WasherService
@@ -13,7 +14,7 @@ class WasherController(private val washerService: WasherService) {
     @PostMapping("/input")
     fun registerWM(@RequestParam name: String,
                    @RequestParam description: String,
-                   @RequestParam image: MultipartFile): Int {
+                   @RequestParam image: MultipartFile): WasherID {
         return washerService.registerWM(name, description, image)
     }
 

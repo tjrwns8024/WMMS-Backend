@@ -1,12 +1,15 @@
 package com.tjrwns8024.wmms.service
 
 import com.tjrwns8024.wmms.model.entitys.Washer
+import com.tjrwns8024.wmms.model.response.WasherID
 import com.tjrwns8024.wmms.model.response.WasherInfo
 import com.tjrwns8024.wmms.model.response.WasherListInfo
 import com.tjrwns8024.wmms.repository.WasherRepository
 import com.tjrwns8024.wmms.util.S3Service
+import org.omg.SendingContext.RunTime
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
+import java.lang.RuntimeException
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.Exception
@@ -16,8 +19,8 @@ class WasherServiceImpl(
         private val washerRepository: WasherRepository,
         private val s3Service: S3Service
 ) : WasherService {
-    override fun registerWM(name: String, description: String, image: MultipartFile): Int {
-        washerRepository.findByName(name).ifPresent { throw Exception() }
+    override fun registerWM(name: String, description: String, image: MultipartFile): WasherID {
+        washerRepository.findByName(name).ifPresent { throw RuntimeException("없는 세탁기입니다.") }
 
         washerRepository.save(
                 Washer(
@@ -29,7 +32,9 @@ class WasherServiceImpl(
                 )
         )
 
-        return washerRepository.findByName(name).orElseThrow { Exception() }.id
+        val washerID = washerRepository.findByName(name).orElseThrow { throw RuntimeException("없는 세탁기입니다.") }.id
+
+        return WasherID(washerID)
     }
 
     override fun getAvailableWM(): List<WasherListInfo> =
@@ -64,7 +69,7 @@ class WasherServiceImpl(
                     it.status,
                     it.register_date
             )
-        }.orElseThrow { Exception() }
+        }.orElseThrow { RuntimeException() }
     }
 
     override fun changeWMStatus(id: Int) {
